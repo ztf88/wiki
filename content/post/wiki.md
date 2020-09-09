@@ -42,6 +42,11 @@ sequenceDiagrams:
 
 # First Try
 
+原理应该是每次删除public，并将其从工作树上清除，删掉`.git`中痕迹；
+然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
+执行`hugo`重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
+最后在执行完脚本后，进行推送
+
 ```bash
 git checkout --orphan gh-pages
 git reset --hard
