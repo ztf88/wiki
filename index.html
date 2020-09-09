@@ -123,6 +123,10 @@
   <div class="post-content">
     <div class="post-summary">
       <h1 id="first-try">First Try</h1>
+<p>原理应该是每次删除public，并将其从工作树上清除，删掉<code>.git</code>中痕迹；
+然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
+执行<code>hugo</code>重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
+最后在执行完脚本后，进行推送</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1

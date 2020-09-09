@@ -16,7 +16,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="olOwOlo" /><meta name="description" content="First Try 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  git checkout --orphan gh-pages git reset --hard git commit --allow-empty -m &amp;#34;Initializing gh-pages branch&amp;#34; git push upstream gh-pages git checkout master rm -rf public git worktree add -B gh-pages public upstream/gh-pages hugo cd public &amp;amp;&amp;amp; git add --all &amp;amp;&amp;amp; git commit -m &amp;#34;Publishing to gh-pages&amp;#34; &amp;amp;&amp;amp; cd .. git push upstream gh-pages # 设置成功后，只需要执行以下命令，修改message就可以 # 进入public目录分支自动切换 hugo cd public &amp;amp;&amp;amp; git add --all &amp;amp;&amp;amp; git commit -m &amp;#34;Publishing to gh-pages&amp;#34; &amp;amp;&amp;amp; cd ..   " /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="olOwOlo" /><meta name="description" content="First Try 原理应该是每次删除public，并将其从工作树上清除，删掉.git中痕迹； 然后重新添加工作树到public目录，重新确认删除public下可能有的文件； 执行hugo重新编译，进入public切换至gh-pages分支，添加所有文件并提交； 最后在执行完脚本后，进行推送
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  git checkout --orphan gh-pages git reset --hard git commit --allow-empty -m &amp;#34;Initializing gh-pages branch&amp;#34; git push upstream gh-pages git checkout master rm -rf public git worktree add -B gh-pages public upstream/gh-pages hugo cd public &amp;amp;&amp;amp; git add --all &amp;amp;&amp;amp; git commit -m &amp;#34;Publishing to gh-pages&amp;#34; &amp;amp;&amp;amp; cd .. git push upstream gh-pages # 设置成功后，只需要执行以下命令，修改message就可以 # 进入public目录分支自动切换 hugo cd public &amp;amp;&amp;amp; git add --all &amp;amp;&amp;amp; git commit -m &amp;#34;Publishing to gh-pages&amp;#34; &amp;amp;&amp;amp; cd ..   " /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -41,6 +42,10 @@
 
 <meta property="og:title" content="Wiki" />
 <meta property="og:description" content="First Try
+原理应该是每次删除public，并将其从工作树上清除，删掉.git中痕迹；
+然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
+执行hugo重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
+最后在执行完脚本后，进行推送
 
 
  1
@@ -84,6 +89,10 @@ cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to g
 <meta property="article:modified_time" content="2020-09-09T14:53:12+08:00" />
 <meta itemprop="name" content="Wiki">
 <meta itemprop="description" content="First Try
+原理应该是每次删除public，并将其从工作树上清除，删掉.git中痕迹；
+然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
+执行hugo重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
+最后在执行完脚本后，进行推送
 
 
  1
@@ -123,7 +132,7 @@ cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to g
 ">
 <meta itemprop="datePublished" content="2020-09-09T14:53:12+08:00" />
 <meta itemprop="dateModified" content="2020-09-09T14:53:12+08:00" />
-<meta itemprop="wordCount" content="132">
+<meta itemprop="wordCount" content="265">
 
 
 
@@ -131,6 +140,10 @@ cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to g
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Wiki"/>
 <meta name="twitter:description" content="First Try
+原理应该是每次删除public，并将其从工作树上清除，删掉.git中痕迹；
+然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
+执行hugo重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
+最后在执行完脚本后，进行推送
 
 
  1
@@ -242,6 +255,10 @@ cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to g
     
     <div class="post-content">
       <h1 id="first-try">First Try</h1>
+<p>原理应该是每次删除public，并将其从工作树上清除，删掉<code>.git</code>中痕迹；
+然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
+执行<code>hugo</code>重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
+最后在执行完脚本后，进行推送</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
