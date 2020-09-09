@@ -16,8 +16,9 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="olOwOlo" /><meta name="description" content="First Try 原理应该是每次删除public，并将其从工作树上清除，删掉.git中痕迹； 然后重新添加工作树到public目录，重新确认删除public下可能有的文件； 执行hugo重新编译，进入public切换至gh-pages分支，添加所有文件并提交； 最后在执行完脚本后，进行推送
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  git checkout --orphan gh-pages git reset --hard git commit --allow-empty -m &amp;#34;Initializing gh-pages branch&amp;#34; git push upstream gh-pages git checkout master rm -rf public git worktree add -B gh-pages public upstream/gh-pages hugo cd public &amp;amp;&amp;amp; git add --all &amp;amp;&amp;amp; git commit -m &amp;#34;Publishing to gh-pages&amp;#34; &amp;amp;&amp;amp; cd .. git push upstream gh-pages # 设置成功后，只需要执行以下命令，修改message就可以 # 进入public目录分支自动切换 hugo cd public &amp;amp;&amp;amp; git add --all &amp;amp;&amp;amp; git commit -m &amp;#34;Publishing to gh-pages&amp;#34; &amp;amp;&amp;amp; cd ..   " /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="olOwOlo" /><meta name="description" content="First Try hosting-on-github
+原理应该是每次删除public，并将其从工作树上清除，删掉.git中痕迹； 然后重新添加工作树到public目录，重新确认删除public下可能有的文件； 执行hugo重新编译，进入public切换至gh-pages分支，添加所有文件并提交； 最后在执行完脚本后，进行推送
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  git checkout --orphan gh-pages git reset --hard git commit --allow-empty -m &amp;#34;Initializing gh-pages branch&amp;#34; git push upstream gh-pages git checkout master rm -rf public git worktree add -B gh-pages public upstream/gh-pages hugo cd public &amp;amp;&amp;amp; git add --all &amp;amp;&amp;amp; git commit -m &amp;#34;Publishing to gh-pages&amp;#34; &amp;amp;&amp;amp; cd .. git push upstream gh-pages # 设置成功后，只需要执行以下命令，修改message就可以 # 进入public目录分支自动切换 hugo cd public &amp;amp;&amp;amp; git add --all &amp;amp;&amp;amp; git commit -m &amp;#34;Publishing to gh-pages&amp;#34; &amp;amp;&amp;amp; cd .. git push --all #将master与gh-pages都推送到github   脚本  clean_master.sh  1 2 3  #!/bin/bash  git add ./content/post/* &amp;amp;&amp;amp; git commit -m &amp;#34;update&amp;#34;   publish_to_ghpages.sh  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28  #!/bin/sh  if [ &amp;#34;`git status -s`&amp;#34; ] then echo &amp;#34;The working directory is dirty. Please commit any pending changes.&amp;#34; exit 1; fi echo &amp;#34;Deleting old publication&amp;#34; rm -rf public mkdir public git worktree prune rm -rf .git/worktrees/public/ echo &amp;#34;Checking out gh-pages branch into public&amp;#34; git worktree add -B gh-pages public upstream/gh-pages echo &amp;#34;Removing existing files&amp;#34; rm -rf public/* echo &amp;#34;Generating site&amp;#34; hugo echo &amp;#34;Updating gh-pages branch&amp;#34; cd public &amp;amp;&amp;amp; git add --all &amp;amp;&amp;amp; git commit -m &amp;#34;Publishing to gh-pages (publish.sh)&amp;#34; #echo &amp;#34;Pushing to github&amp;#34; #git push --all   " /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -42,6 +43,7 @@
 
 <meta property="og:title" content="Wiki" />
 <meta property="og:description" content="First Try
+hosting-on-github
 原理应该是每次删除public，并将其从工作树上清除，删掉.git中痕迹；
 然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
 执行hugo重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
@@ -63,6 +65,8 @@
 13
 14
 15
+16
+17
 
 
 git checkout --orphan gh-pages
@@ -80,6 +84,89 @@ git push upstream gh-pages
 # 进入public目录分支自动切换
 hugo
 cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to gh-pages&#34; &amp;&amp; cd ..
+git push --all #将master与gh-pages都推送到github
+
+
+
+脚本
+
+clean_master.sh
+
+
+
+1
+2
+3
+
+
+#!/bin/bash
+
+git add ./content/post/* &amp;&amp; git commit -m &#34;update&#34;
+
+
+
+publish_to_ghpages.sh
+
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+
+
+#!/bin/sh
+
+if [ &#34;`git status -s`&#34; ]
+then
+    echo &#34;The working directory is dirty. Please commit any pending changes.&#34;
+    exit 1;
+fi
+
+echo &#34;Deleting old publication&#34;
+rm -rf public
+mkdir public
+git worktree prune
+rm -rf .git/worktrees/public/
+
+echo &#34;Checking out gh-pages branch into public&#34;
+git worktree add -B gh-pages public upstream/gh-pages
+
+echo &#34;Removing existing files&#34;
+rm -rf public/*
+
+echo &#34;Generating site&#34;
+hugo
+
+echo &#34;Updating gh-pages branch&#34;
+cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to gh-pages (publish.sh)&#34;
+
+#echo &#34;Pushing to github&#34;
+#git push --all
 
 
 " />
@@ -89,6 +176,7 @@ cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to g
 <meta property="article:modified_time" content="2020-09-09T14:53:12+08:00" />
 <meta itemprop="name" content="Wiki">
 <meta itemprop="description" content="First Try
+hosting-on-github
 原理应该是每次删除public，并将其从工作树上清除，删掉.git中痕迹；
 然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
 执行hugo重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
@@ -110,6 +198,8 @@ cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to g
 13
 14
 15
+16
+17
 
 
 git checkout --orphan gh-pages
@@ -127,12 +217,95 @@ git push upstream gh-pages
 # 进入public目录分支自动切换
 hugo
 cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to gh-pages&#34; &amp;&amp; cd ..
+git push --all #将master与gh-pages都推送到github
+
+
+
+脚本
+
+clean_master.sh
+
+
+
+1
+2
+3
+
+
+#!/bin/bash
+
+git add ./content/post/* &amp;&amp; git commit -m &#34;update&#34;
+
+
+
+publish_to_ghpages.sh
+
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+
+
+#!/bin/sh
+
+if [ &#34;`git status -s`&#34; ]
+then
+    echo &#34;The working directory is dirty. Please commit any pending changes.&#34;
+    exit 1;
+fi
+
+echo &#34;Deleting old publication&#34;
+rm -rf public
+mkdir public
+git worktree prune
+rm -rf .git/worktrees/public/
+
+echo &#34;Checking out gh-pages branch into public&#34;
+git worktree add -B gh-pages public upstream/gh-pages
+
+echo &#34;Removing existing files&#34;
+rm -rf public/*
+
+echo &#34;Generating site&#34;
+hugo
+
+echo &#34;Updating gh-pages branch&#34;
+cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to gh-pages (publish.sh)&#34;
+
+#echo &#34;Pushing to github&#34;
+#git push --all
 
 
 ">
 <meta itemprop="datePublished" content="2020-09-09T14:53:12+08:00" />
 <meta itemprop="dateModified" content="2020-09-09T14:53:12+08:00" />
-<meta itemprop="wordCount" content="265">
+<meta itemprop="wordCount" content="429">
 
 
 
@@ -140,6 +313,7 @@ cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to g
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Wiki"/>
 <meta name="twitter:description" content="First Try
+hosting-on-github
 原理应该是每次删除public，并将其从工作树上清除，删掉.git中痕迹；
 然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
 执行hugo重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
@@ -161,6 +335,8 @@ cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to g
 13
 14
 15
+16
+17
 
 
 git checkout --orphan gh-pages
@@ -178,6 +354,89 @@ git push upstream gh-pages
 # 进入public目录分支自动切换
 hugo
 cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to gh-pages&#34; &amp;&amp; cd ..
+git push --all #将master与gh-pages都推送到github
+
+
+
+脚本
+
+clean_master.sh
+
+
+
+1
+2
+3
+
+
+#!/bin/bash
+
+git add ./content/post/* &amp;&amp; git commit -m &#34;update&#34;
+
+
+
+publish_to_ghpages.sh
+
+
+
+ 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+
+
+#!/bin/sh
+
+if [ &#34;`git status -s`&#34; ]
+then
+    echo &#34;The working directory is dirty. Please commit any pending changes.&#34;
+    exit 1;
+fi
+
+echo &#34;Deleting old publication&#34;
+rm -rf public
+mkdir public
+git worktree prune
+rm -rf .git/worktrees/public/
+
+echo &#34;Checking out gh-pages branch into public&#34;
+git worktree add -B gh-pages public upstream/gh-pages
+
+echo &#34;Removing existing files&#34;
+rm -rf public/*
+
+echo &#34;Generating site&#34;
+hugo
+
+echo &#34;Updating gh-pages branch&#34;
+cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to gh-pages (publish.sh)&#34;
+
+#echo &#34;Pushing to github&#34;
+#git push --all
 
 
 "/>
@@ -255,6 +514,7 @@ cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to g
     
     <div class="post-content">
       <h1 id="first-try">First Try</h1>
+<p><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">hosting-on-github</a></p>
 <p>原理应该是每次删除public，并将其从工作树上清除，删掉<code>.git</code>中痕迹；
 然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
 执行<code>hugo</code>重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
@@ -276,6 +536,8 @@ cd public &amp;&amp; git add --all &amp;&amp; git commit -m &#34;Publishing to g
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-bash" data-lang="bash">git checkout --orphan gh-pages
@@ -293,6 +555,89 @@ git push upstream gh-pages
 <span class="c1"># 进入public目录分支自动切换</span>
 hugo
 <span class="nb">cd</span> public <span class="o">&amp;&amp;</span> git add --all <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;Publishing to gh-pages&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+git push --all <span class="c1">#将master与gh-pages都推送到github</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="脚本">脚本</h2>
+<ol>
+<li><code>clean_master.sh</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+git add ./content/post/* <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;update&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><code>publish_to_ghpages.sh</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;`git status -s`&#34;</span> <span class="o">]</span>
+<span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&#34;The working directory is dirty. Please commit any pending changes.&#34;</span>
+    <span class="nb">exit</span> 1<span class="p">;</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;Deleting old publication&#34;</span>
+rm -rf public
+mkdir public
+git worktree prune
+rm -rf .git/worktrees/public/
+
+<span class="nb">echo</span> <span class="s2">&#34;Checking out gh-pages branch into public&#34;</span>
+git worktree add -B gh-pages public upstream/gh-pages
+
+<span class="nb">echo</span> <span class="s2">&#34;Removing existing files&#34;</span>
+rm -rf public/*
+
+<span class="nb">echo</span> <span class="s2">&#34;Generating site&#34;</span>
+hugo
+
+<span class="nb">echo</span> <span class="s2">&#34;Updating gh-pages branch&#34;</span>
+<span class="nb">cd</span> public <span class="o">&amp;&amp;</span> git add --all <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;Publishing to gh-pages (publish.sh)&#34;</span>
+
+<span class="c1">#echo &#34;Pushing to github&#34;</span>
+<span class="c1">#git push --all</span>
 </code></pre></td></tr></table>
 </div>
 </div>
