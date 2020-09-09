@@ -1,0 +1,37 @@
+<?xml-stylesheet type="text/xsl" href="https://ztf88.github.io/wiki/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://ztf88.github.io/wiki/</loc>
+    <lastmod>2020-09-09T14:53:12+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ztf88.github.io/wiki/post/</loc>
+    <lastmod>2020-09-09T14:53:12+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ztf88.github.io/wiki/post/wiki/</loc>
+    <lastmod>2020-09-09T14:53:12+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ztf88.github.io/wiki/categories/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ztf88.github.io/wiki/tags/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+</urlset>

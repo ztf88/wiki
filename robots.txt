@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://ztf88.github.io/wiki/sitemap.xml
