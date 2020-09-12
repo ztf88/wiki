@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Even - A super concise theme for Hugo</title>
+  <title>wiki</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="olOwOlo" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="ztf88" /><meta name="description" content="wiki" /><meta name="keywords" content="wiki" />
 
 
 
@@ -27,8 +27,8 @@
 
 
 <link rel="canonical" href="https://ztf88.github.io/wiki/" />
-  <link href="https://ztf88.github.io/wiki/index.xml" rel="alternate" type="application/rss+xml" title="Even - A super concise theme for Hugo" />
-  <link href="https://ztf88.github.io/wiki/index.xml" rel="feed" type="application/rss+xml" title="Even - A super concise theme for Hugo" />
+  <link href="https://ztf88.github.io/wiki/index.xml" rel="alternate" type="application/rss+xml" title="wiki" />
+  <link href="https://ztf88.github.io/wiki/index.xml" rel="feed" type="application/rss+xml" title="wiki" />
 <link rel="apple-touch-icon" sizes="180x180" href="/wiki/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/wiki/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/wiki/favicon-16x16.png">
@@ -41,16 +41,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Even - A super concise theme for Hugo" />
-<meta property="og:description" content="Hugo theme even example site." />
+<meta property="og:title" content="wiki" />
+<meta property="og:description" content="wiki" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://ztf88.github.io/wiki/" />
 <meta property="og:updated_time" content="2020-09-09T14:53:12+08:00" />
-<meta itemprop="name" content="Even - A super concise theme for Hugo">
-<meta itemprop="description" content="Hugo theme even example site.">
+<meta itemprop="name" content="wiki">
+<meta itemprop="description" content="wiki">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Even - A super concise theme for Hugo"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta name="twitter:title" content="wiki"/>
+<meta name="twitter:description" content="wiki"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -65,7 +65,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/wiki/" class="logo">Even</a>
+    <a href="/wiki/" class="logo">wiki</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -89,7 +89,7 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/wiki/" class="logo">Even</a>
+  <a href="/wiki/" class="logo">wiki</a>
 </div>
 
 <nav class="site-navbar">
@@ -113,146 +113,24 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/wiki/post/wiki/">Wiki</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/wiki/post/how-to-deploy-github-pages-with-hugo/">How to deploy github pages with hugo</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2020-09-09 </span>
-      
+      <div class="post-category">
+          <a href="/wiki/categories/tutorial/"> tutorial </a>
+          </div>
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <h1 id="first-try">First Try</h1>
-<p><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">hosting-on-github</a></p>
-<p>原理应该是每次删除public，并将其从工作树上清除，删掉<code>.git</code>中痕迹；
-然后重新添加工作树到public目录，重新确认删除public下可能有的文件；
-执行<code>hugo</code>重新编译，进入public切换至gh-pages分支，添加所有文件并提交；
-最后在执行完脚本后，进行推送</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">git checkout --orphan gh-pages
-git reset --hard
-git commit --allow-empty -m <span class="s2">&#34;Initializing gh-pages branch&#34;</span>
-git push upstream gh-pages
-git checkout master
-rm -rf public
-git worktree add -B gh-pages public upstream/gh-pages
-hugo
-<span class="nb">cd</span> public <span class="o">&amp;&amp;</span> git add --all <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;Publishing to gh-pages&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-git push upstream gh-pages
-
-<span class="c1"># 设置成功后，只需要执行以下命令，修改message就可以</span>
-<span class="c1"># 进入public目录分支自动切换</span>
-hugo
-<span class="nb">cd</span> public <span class="o">&amp;&amp;</span> git add --all <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;Publishing to gh-pages&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
-git push --all <span class="c1">#将master与gh-pages都推送到github</span>
-
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="脚本">脚本</h2>
-<ol>
-<li><code>clean_master.sh</code></li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
-</span><span class="cp"></span>
-git add ./content/post/* <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;update&#34;</span>
-</code></pre></td></tr></table>
-</div>
-</div><ol start="2">
-<li><code>publish_to_ghpages.sh</code></li>
-</ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
-</span><span class="cp"></span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;`git status -s`&#34;</span> <span class="o">]</span>
-<span class="k">then</span>
-    <span class="nb">echo</span> <span class="s2">&#34;The working directory is dirty. Please commit any pending changes.&#34;</span>
-    <span class="nb">exit</span> 1<span class="p">;</span>
-<span class="k">fi</span>
-
-<span class="nb">echo</span> <span class="s2">&#34;Deleting old publication&#34;</span>
-rm -rf public
-mkdir public
-git worktree prune
-rm -rf .git/worktrees/public/
-
-<span class="nb">echo</span> <span class="s2">&#34;Checking out gh-pages branch into public&#34;</span>
-git worktree add -B gh-pages public upstream/gh-pages
-
-<span class="nb">echo</span> <span class="s2">&#34;Removing existing files&#34;</span>
-rm -rf public/*
-
-<span class="nb">echo</span> <span class="s2">&#34;Generating site&#34;</span>
-hugo
-
-<span class="nb">echo</span> <span class="s2">&#34;Updating gh-pages branch&#34;</span>
-<span class="nb">cd</span> public <span class="o">&amp;&amp;</span> git add --all <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;Publishing to gh-pages (publish.sh)&#34;</span>
-
-<span class="c1">#echo &#34;Pushing to github&#34;</span>
-<span class="c1">#git push --all</span>
-</code></pre></td></tr></table>
-</div>
-</div>
+      Install hugo  Hugo would be installed easily to windows and linux
+   Repo
+  Releases
+  Windows  Extra &ldquo;hugo_extended_0.74.3_Windows-64bit.zip&rdquo; Put &ldquo;hugo.exe&rdquo; to MSYS64 &ldquo;msys64/usr/bin&rdquo; which path had been added to $PATH  1 2  $ hugo version Hugo Static Site Generator v0.74.3/extended windows/amd64 BuildDate: unknown   Linux 1 2 3 4 5 6 7 8 9  mkdir $HOME/src cd $HOME/src git clone https://github.
     </div>
     <div class="read-more">
-      <a href="/wiki/post/wiki/" class="read-more-link">Read more...</a>
+      <a href="/wiki/post/how-to-deploy-github-pages-with-hugo/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
@@ -271,21 +149,6 @@ hugo
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
-      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
-      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
-      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
-      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
-      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
-      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
-      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
-      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
-      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
-      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
-      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
-      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
-      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
   <a href="https://ztf88.github.io/wiki/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
@@ -303,12 +166,11 @@ hugo
 
   <span class="copyright-year">
     &copy; 
-    2017 - 
     2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
-    <span class="author">olOwOlo</span>
+    <span class="author">ztf88</span>
   </span>
 </div>
     </footer>

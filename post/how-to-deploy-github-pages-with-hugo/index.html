@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>How to deploy github pages with hugo - wiki</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ztf88" /><meta name="description" content="how to deploy github pages with hugo" /><meta name="keywords" content="wiki" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.74.3 with theme even" />
+
+
+<link rel="canonical" href="https://ztf88.github.io/wiki/post/how-to-deploy-github-pages-with-hugo/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/wiki/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/wiki/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/wiki/favicon-16x16.png">
+<link rel="manifest" href="/wiki/manifest.json">
+<link rel="mask-icon" href="/wiki/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/wiki/sass/main.min.651e6917abb0239242daa570c2bec9867267bbcd83646da5a850afe573347b44.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="How to deploy github pages with hugo" />
+<meta property="og:description" content="how to deploy github pages with hugo" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ztf88.github.io/wiki/post/how-to-deploy-github-pages-with-hugo/" />
+<meta property="article:published_time" content="2020-09-09T14:53:12+08:00" />
+<meta property="article:modified_time" content="2020-09-09T14:53:12+08:00" />
+<meta itemprop="name" content="How to deploy github pages with hugo">
+<meta itemprop="description" content="how to deploy github pages with hugo">
+<meta itemprop="datePublished" content="2020-09-09T14:53:12+08:00" />
+<meta itemprop="dateModified" content="2020-09-09T14:53:12+08:00" />
+<meta itemprop="wordCount" content="482">
+
+
+
+<meta itemprop="keywords" content="hugo,tutorial," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to deploy github pages with hugo"/>
+<meta name="twitter:description" content="how to deploy github pages with hugo"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/wiki/" class="logo">wiki</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/wiki/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/wiki/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/wiki/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/wiki/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/wiki/" class="logo">wiki</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/wiki/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/wiki/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/wiki/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/wiki/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">How to deploy github pages with hugo</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-09-09 </span>
+        <div class="post-category">
+            <a href="/wiki/categories/tutorial/"> tutorial </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#install-hugo">Install hugo</a>
+      <ul>
+        <li><a href="#windows">Windows</a></li>
+        <li><a href="#linux">Linux</a></li>
+      </ul>
+    </li>
+    <li><a href="#some-commands-from-hugo-docs-and-more">Some commands from hugo docs and more</a></li>
+    <li><a href="#scripts">Scripts</a></li>
+    <li><a href="#some-hugo-commands">Some hugo commands</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="install-hugo">Install hugo</h2>
+<blockquote>
+<p>Hugo would be installed easily to windows and linux</p>
+</blockquote>
+<ul>
+<li>
+<p><a href="https://github.com/gohugoio/hugo">Repo</a></p>
+</li>
+<li>
+<p><a href="https://github.com/gohugoio/hugo/releases">Releases</a></p>
+</li>
+</ul>
+<h3 id="windows">Windows</h3>
+<ul>
+<li>Extra &ldquo;hugo_extended_0.74.3_Windows-64bit.zip&rdquo;</li>
+<li>Put &ldquo;hugo.exe&rdquo; to MSYS64 &ldquo;msys64/usr/bin&rdquo; which path had been added to $PATH</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">$ hugo version
+Hugo Static Site Generator v0.74.3/extended windows/amd64 BuildDate: unknown
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="linux">Linux</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir <span class="nv">$HOME</span>/src
+<span class="nb">cd</span> <span class="nv">$HOME</span>/src
+git clone https://github.com/gohugoio/hugo.git
+<span class="nb">cd</span> hugo
+<span class="c1"># go install</span>
+<span class="c1"># installing with extended could solve some mistakes about scss</span> 
+<span class="c1"># &#34;extended&#34; info could show in &#34;hugo version&#34;</span> 
+<span class="c1"># hugo will be installed to $GOPATH</span>
+<span class="nv">CGO_ENABLED</span><span class="o">=</span><span class="m">1</span> go install --tags extended
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="some-commands-from-hugo-docs-and-more">Some commands from hugo docs and more</h2>
+<ul>
+<li><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">how to host on github with hugo</a></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># hugo version</span>
+<span class="c1"># hugo new site your_awsome_site</span>
+<span class="c1"># git clone https://github.com/olOwOlo/hugo-theme-even themes/even</span>
+<span class="c1"># cp themes/even/exampleSite/config.toml .</span>
+<span class="c1"># cp themes/even/archetypes/default.md ./archetypes</span>
+<span class="c1"># hugo server</span>
+<span class="c1"># mv themes/even/.git themes/even/dotgit</span>
+<span class="c1"># git config user.name &#34;john&#34;</span>
+<span class="c1"># git config user.email &#34;john@example.com&#34;</span>
+<span class="c1"># echo &#34;public&#34; &gt;&gt; .gitignore</span>
+<span class="c1"># git status</span>
+<span class="c1"># git add . &amp;&amp; git commit -m &#34;initial hugo blog&#34;</span>
+<span class="c1"># # create a new repo named &#34;yourname.github.io&#34;</span>
+<span class="c1"># # if you don&#39;t create a readme.md, you will see some tips about &#34;how to add</span>
+<span class="c1"># remote repo to you local repo&#34;</span>
+<span class="c1"># git remote add origin https://github.com/yourname/yourname.github.io.git</span>
+<span class="c1"># git pull</span> 
+<span class="c1"># git status</span>
+
+git checkout --orphan gh-pages
+git reset --hard
+git commit --allow-empty -m <span class="s2">&#34;Initializing gh-pages branch&#34;</span>
+git push upstream gh-pages
+git checkout master
+rm -rf public
+git worktree add -B gh-pages public upstream/gh-pages
+hugo
+<span class="nb">cd</span> public <span class="o">&amp;&amp;</span> git add --all <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;Publishing to gh-pages&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+git push upstream gh-pages
+<span class="c1"># generate and push</span>
+hugo
+<span class="nb">cd</span> public <span class="o">&amp;&amp;</span> git add --all <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;Publishing to gh-pages&#34;</span> <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+<span class="c1"># &#34;--all&#34; will push both master and gh-pages to github</span>
+git push --all 
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="scripts">Scripts</h2>
+<blockquote>
+<p>put &ldquo;publish_to_ghpages.sh&rdquo; to your repo, your blog will be published easily.</p>
+</blockquote>
+<ol>
+<li><code>clean_master.sh</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>
+git add ./content/post/* <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;update&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li><code>publish_to_ghpages.sh</code></li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&#34;`git status -s`&#34;</span> <span class="o">]</span>
+<span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&#34;The working directory is dirty. Please commit any pending changes.&#34;</span>
+    <span class="nb">exit</span> 1<span class="p">;</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span> <span class="s2">&#34;Deleting old publication&#34;</span>
+rm -rf public
+mkdir public
+git worktree prune
+rm -rf .git/worktrees/public/
+
+<span class="nb">echo</span> <span class="s2">&#34;Checking out gh-pages branch into public&#34;</span>
+git worktree add -B gh-pages public upstream/gh-pages
+
+<span class="nb">echo</span> <span class="s2">&#34;Removing existing files&#34;</span>
+rm -rf public/*
+
+<span class="nb">echo</span> <span class="s2">&#34;Generating site&#34;</span>
+hugo
+
+<span class="nb">echo</span> <span class="s2">&#34;Updating gh-pages branch&#34;</span>
+<span class="nb">cd</span> public <span class="o">&amp;&amp;</span> git add --all <span class="o">&amp;&amp;</span> git commit -m <span class="s2">&#34;Publishing to gh-pages (publish.sh)&#34;</span>
+
+<span class="c1">#echo &#34;Pushing to github&#34;</span>
+<span class="c1">#git push --all</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="some-hugo-commands">Some hugo commands</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">hugo server
+hugo
+hugo new /content/post/new-title.md
+</code></pre></td></tr></table>
+</div>
+</div>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">ztf88</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2020-09-09
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/wiki/tags/hugo/">hugo</a>
+          <a href="/wiki/tags/tutorial/">tutorial</a>
+          </div>
+      <nav class="post-nav">
+        
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+  <a href="https://ztf88.github.io/wiki/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ztf88</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/wiki/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
