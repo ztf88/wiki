@@ -2,7 +2,7 @@
 title: "Go_notes"
 date: 2020-09-10T16:42:27+08:00
 lastmod: 2020-09-10T16:42:27+08:00
-draft: true
+draft: false
 keywords: ["golang"]
 description: "golang notes"
 tags: ["golang"]
@@ -334,3 +334,186 @@ func main() {
 	fmt.Printf("%02d.%02d.%4d\n", t.Day(), t.Month(), t.Year())
 }
 ```
+
+## 指针
+
+...
+# 控制结构
+
+## 简述
+
+- 条件语句: if-else, switch, break, continue, select
+
+- 循环语句: for, range
+
+## if-else
+
+```go
+# base 1
+
+if condition {
+	// do something
+}
+
+# base 2
+
+if condition {
+	// do something
+} else {
+	// do something
+}
+
+# base 3
+
+if condition1 {
+	// do something
+} else if condition2 {
+	// do something
+} else {
+	// default something
+}
+
+# 4 if条件可以有一个初始化语句
+
+if v := 4; v > max {
+	// do something
+}
+
+```
+
+## 测试多返回值函数的错误
+
+## switch
+
+应用于if-else对过多，可使用switch语句
+
+```go
+// switch v与case后变量对比
+switch v {
+	case 1:
+		...
+	case 2:
+		...
+	default:
+		...
+}
+
+// 实例
+
+switch i {
+	case 0: //只有i == 0 才会进入该分支
+	case 1：
+		f() //当i == 1执行f()函数
+}
+
+// fallthrough
+
+switch i {
+	case 0: fallthrough
+	case 1:
+		f() //当i == 0函数f()也会执行
+}
+
+// 无条件switch，配合其他变量
+
+var num = 3
+switch {
+	case num > 2:
+		fmt.Println("num is bigger than 2")
+	case num < 2:
+		fmt.Println("num is smaller than2")
+	default:
+		// ...
+}
+
+// 带初始化语句的switch
+switch initialzation {
+	case v1:
+		...
+	case v2:
+		...
+	default:
+		...
+}
+
+// 实例
+switch t := time.Now(); {
+	case t > 0:
+		...
+	case t < 0:
+		...
+	default:
+		//
+}
+
+```
+
+
+
+## for
+
+```go
+for 初始化语句；条件语句；修饰语句 {}
+
+// case 1
+for i, j := 0, N; i < j; i, j = i+1, j-1 {}
+
+// case 2
+for i:=0; i<5; i++ {
+    for j:=0; j<10; j++ {
+        println(j)
+    }
+}
+
+// 基于条件判断的迭代，或者说没有初始化语句与修饰语句的判断
+for i >= 0 {
+	i = i -1
+	fmt.Println("...")
+	
+// 无限循环
+
+for {
+	...
+}
+
+// for-range
+
+for pos, char := range str {
+	...
+}
+
+// 
+```
+
+## break and continue
+
+break关键字阻断循环；continue关键字跳过本轮循环
+
+```go
+var i int = 5
+for {
+	i = i -1
+	fmt.Printf("The variable i is now: %d\n", i)
+	if i < 0 {
+		break
+	}
+}
+
+
+for i := 1; i < 5; i ++ {
+	fmt.Println("i")
+	if i == 3 {
+		continue
+	}
+}
+
+```
+
+## 标签与goto
+
+for, switch 或 select 语句都可以配合标签label形式的标识符使用
+
+*标签的大小写是敏感的，一般使用大写字母*
+
+
+
