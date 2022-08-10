@@ -28,7 +28,7 @@ jobs:
         with:
           github_token: ${{ secrets.HUGO_WIKI_TOKEN }}
           EXTERNAL_REPOSITORY: ztf88/wiki
-          PUBLISH_BRANCH: gh-pages
+          PUBLISH_BRANCH: master
           PUBLISH_DIR: ./public
           commit_message: ${{ github.event.head_commit.message }}
 
