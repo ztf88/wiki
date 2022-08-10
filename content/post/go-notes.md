@@ -1,5 +1,5 @@
 ---
-title: "Go_notes"
+title: "Go notes"
 date: 2020-09-10T16:42:27+08:00
 lastmod: 2020-09-10T16:42:27+08:00
 draft: false
